@@ -2,7 +2,7 @@
 Author: error: git config user.name && git config user.email & please set dead value or install git
 Date: 2022-08-25 10:15:15
 LastEditors: error: git config user.name && git config user.email & please set dead value or install git
-LastEditTime: 2022-08-27 12:08:18
+LastEditTime: 2022-08-27 15:51:38
 FilePath: \Python语言程序设计\机械设计与校核\standard_helical_ gears.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -14,12 +14,12 @@ import math
 
 #% 变量输入
 
-T1_Nmm = 6.119424e4
+T1_Nmm = 270.83877e3
 "#*     输入功率(N•mm)"
-n1_rpm = 400.0
+n1_rpm = 86.79245283
 "#*     小齿轮转速(rpm)"
-z1 = 23
-z2 = 106
+z1 = 22
+z2 = 70
 #* ↑    初选小齿轮齿数、大齿轮齿数
 Φd = 1
 "#*     齿宽系数(-)由表10-8选取"
@@ -27,14 +27,14 @@ z2 = 106
 "#*     小齿轮接触疲劳极限(MPa)"
 σH2_MPa = 550
 "#*     大齿轮接触疲劳极限(MPa)"
-KHN1 = 0.90
+KHN1 = 0.95
 "#*     小齿轮接触疲劳寿命系数"
-KHN2 = 0.95
+KHN2 = 0.98
 "#*     大齿轮接触疲劳寿命系数"
 ZE = 189.8
 "#*     弹性影响系数(1)表10-6"
-KHβ = 1.358
-"#*     齿向载荷分布系数(1)表10-4"
+#? KHβ = 1.358
+#?     齿向载荷分布系数(1)表10-4
 σF1_MPa = 500
 "#*     小齿轮弯曲疲劳极限(MPa)"
 σF2_MPa = 350
@@ -154,13 +154,15 @@ print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 v_mps = pi*dt1_mm_*n1_rpm/60000
 #* ↑    calculation result: 小齿轮圆周速度(m/s)
 print('{:　^8} {:^7} {:.4f}'.format('≈小圆周速度', 'v(m/s)', v_mps))
-Kv = eval(input('Typing: 动载系数Kv = '))
+Kv = eval(input('Typing: 图10-8动载系数Kv = '))
 print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 #* ↑    input value: 动载系数(1)
 
 b_mm_ = Φd*dt1_mm_
-"#*     calculation result: 试算小齿轮齿宽(mm)"
+"#*     calculation result: 试算小齿轮齿宽b'(mm)"
 print('{:　^8} {:^7} {:.4f}'.format('≈小齿轮齿宽', 'b(mm)', b_mm_))
+KHb = eval(input('Typing: 表10-4齿向载荷分布系数Kʜβ = '))
+"#*     input value: 齿向载荷分布系数Kʜβ(1)"
 print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 
 Ft1_N_ = 2*T1_Nmm/dt1_mm_
@@ -170,11 +172,11 @@ print('{:-^15} {:-^7} {:-^7}'.format('', '', ''))
 KAFt1b_Npmm_ = KA*Ft1_N_/b_mm_
 #* ↑    calculation result:
 print('{:　^8} {:^7} {:.4f}'.format('KA*Ft1/b (N/mm)', '', KAFt1b_Npmm_))
-KHa = eval(input('Typing: 齿间载荷分配系数Kʜα = '))
+KHa = eval(input('Typing: 表10-3齿间载荷分配系数Kʜα = '))
 #* ↑    input value: 齿间载荷分配系数(1)
 print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 
-KH = KA*Kv*KHa*KHβ
+KH = KA*Kv*KHa*KHb
 "#* ↑    calculation result: 载荷系数Kʜ(1)"
 print('{:　^8} {:^7} {:.4f}'.format('载荷系数', 'Kʜ(1)', KH))
 print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
@@ -201,7 +203,7 @@ print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 u_mps = pi*d1_mm*n1_rpm/60000
 "#*     calculation result: 校核用设计圆周速度u(m/s)"
 print('{:　^8} {:^7} {:.4f}'.format('校核小圆周速度', 'u(m/s)', u_mps))
-Ku = eval(input('Typing: 动载系数Ku = '))
+Ku = eval(input('Typing: 图10-8动载系数Ku = '))
 "#*     input value: 校核用动载系数(1)"
 print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 
@@ -212,7 +214,7 @@ print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 KAFt1b_Npmm = KA*(2*T1_Nmm/d1_mm)/b_mm
 #* ↑    calculation result:
 print('{:　^8} {:^7} {:.4f}'.format('KA*Ft1/b (N/mm)', '', KAFt1b_Npmm))
-KFa = eval(input('Typing: 齿间载荷分配系数Kғα = '))
+KFa = eval(input('Typing: 表10-3齿间载荷分配系数Kғα = '))
 "#*     input value: 齿根弯曲疲劳强度校核用齿间载荷分配系数Kғα(1)"
 print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 
@@ -221,7 +223,7 @@ h_mm = (2*han_+cn_)*m_mm
 bph = b_mm/h_mm
 "#*     calculation result: 宽高比b/h(1)"
 print('{:　^8} {:^7} {:.4f}'.format('b/h', '', bph))
-KFb = eval(input('Typing: 齿间载荷分配系数Kғα = '))
+KFb = eval(input('Typing: 图10-13齿向载荷分布系数Kғβ = '))
 "#*     input value: 齿根弯曲疲劳强度校核用齿向载荷分布系数Kғβ(1)"
 print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 
@@ -256,18 +258,18 @@ print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 
 #% 11.引入齿形系数Yғa和应力修正系数Ysa
 
-zv1 = z1/math.pow(math.cos(b_rad))
+zv1 = z1/math.pow(math.cos(b_rad), 3)
 "#*     calculation result: 小齿轮当量齿数zv1(1)"
 print('{:　^8} {:^7} {:.4f}'.format('小齿轮当量齿数', 'zv₁(1)', zv1))
-YFa1 = eval(input('Typing: 小齿轮齿形系数Yғa₁ = '))
+YFa1 = eval(input('Typing: 表10-5小齿轮齿形系数Yғa₁ = '))
 "#*     input value: 小齿轮齿形系数Yғa₁(1)"
 YSa1 = eval(input('Typing: 小齿轮应力修正系数Ysa₁ = '))
 "#*     input value: 小齿轮应力修正系数Ysa₁(1)"
 print('{:-^15} {:-^7} {:-^7}'.format('', '', ''))
-zv2 = z2/math.pow(math.cos(b_rad))
+zv2 = z2/math.pow(math.cos(b_rad), 3)
 "#*     calculation result: 大齿轮当量齿数zv2(1)"
 print('{:　^8} {:^7} {:.4f}'.format('大齿轮当量齿数', 'zv₂(1)', zv2))
-YFa2 = eval(input('Typing: 大齿轮齿形系数Yғa₂ = '))
+YFa2 = eval(input('Typing: 表10-5大齿轮齿形系数Yғa₂ = '))
 "#*     input value: 大齿轮齿形系数Yғa₂(1)"
 YSa2 = eval(input('Typing: 大齿轮应力修正系数Ysa₂ = '))
 "#*     input value: 大齿轮应力修正系数Ysa₂(1)"
@@ -286,6 +288,6 @@ m_mm_ = math.pow(2*KF*T1_Nmm*Yepsilon*Ybeta*math.pow(math.cos(b_rad)/z1, 2)*YFaY
 print('{:　^8} {:^7} {:.4f}'.format('校核模数', 'm\'(mm)', m_mm_))
 print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 
-
+print('Info: Completed!')
 
 '''ᴀ ʙ ᴄ ᴅ ᴇ ғ ɢ ʜ ɪ ᴊ ᴋ ʟ ᴍ ɴ o ᴘ ǫ ʀ s ᴛ ᴜ ᴠ ᴡ x ʏ ᴢ'''
