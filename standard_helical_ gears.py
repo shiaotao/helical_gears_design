@@ -2,7 +2,7 @@
 Author: error: git config user.name && git config user.email & please set dead value or install git
 Date: 2022-08-25 10:15:15
 LastEditors: error: git config user.name && git config user.email & please set dead value or install git
-LastEditTime: 2022-08-28 19:08:36
+LastEditTime: 2022-08-28 21:30:16
 FilePath: \Python语言程序设计\机械设计与校核\standard_helical_ gears.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -18,8 +18,8 @@ T1_Nmm = 270.83877e3
 "#*     输入功率(N•mm)"
 n1_rpm = 86.7924528
 "#*     小齿轮转速(rpm)"
-z1 = 22
-z2 = 70
+z1 = 28
+z2 = 90
 #* ↑    初选小齿轮齿数、大齿轮齿数
 Φd = 1
 "#*     齿宽系数(-)由表10-8选取"
@@ -46,7 +46,7 @@ KFN2 = 0.95
 
 #% 标准值、推荐值
 
-KHt = 1.2
+KHt = 1.6
 "#*     初选载荷系数(-)"
 KA = 1
 "#*     使用系数(1)"
