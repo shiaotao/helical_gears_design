@@ -2,7 +2,7 @@
 Author: error: git config user.name && git config user.email & please set dead value or install git
 Date: 2022-08-27 14:59:48
 LastEditors: error: git config user.name && git config user.email & please set dead value or install git
-LastEditTime: 2022-08-27 16:01:28
+LastEditTime: 2022-08-28 19:17:54
 FilePath: \Python语言程序设计\机械设计与校核\main_dimensions_of_helical_gear.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -10,9 +10,9 @@ import math
 
 β_deg = 14
 "#*     初选螺旋角(°)"
-z1 = 23
-z2 = 106
-mn_mm = 2
+z1 = 22
+z2 = 70
+mn_mm = 3
 "#*     标准模数mn(mm)"
 
 print('{:^16} {:^7} {:^7}'.format('RESULTS', 'NAME', 'VALUE'))

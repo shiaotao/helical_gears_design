@@ -2,7 +2,7 @@
 Author: error: git config user.name && git config user.email & please set dead value or install git
 Date: 2022-08-25 10:15:15
 LastEditors: error: git config user.name && git config user.email & please set dead value or install git
-LastEditTime: 2022-08-27 15:51:38
+LastEditTime: 2022-08-28 19:08:36
 FilePath: \Python语言程序设计\机械设计与校核\standard_helical_ gears.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -16,7 +16,7 @@ import math
 
 T1_Nmm = 270.83877e3
 "#*     输入功率(N•mm)"
-n1_rpm = 86.79245283
+n1_rpm = 86.7924528
 "#*     小齿轮转速(rpm)"
 z1 = 22
 z2 = 70
@@ -39,9 +39,9 @@ ZE = 189.8
 "#*     小齿轮弯曲疲劳极限(MPa)"
 σF2_MPa = 350
 "#*     大齿轮弯曲触疲劳极限(MPa)"
-KFN1 = 0.88
+KFN1 = 0.92
 "#*     小齿轮弯曲疲劳寿命系数"
-KFN2 = 0.92
+KFN2 = 0.95
 "#*     大齿轮弯曲疲劳寿命系数"
 
 #% 标准值、推荐值
@@ -278,6 +278,9 @@ print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 YFa1YSa1 = YFa1*YSa1/sigmaF1_MPa
 YFa2YSa2 = YFa2*YSa2/sigmaF2_MPa
 #* ↑    calculation result:
+print('{:　^8} {:^7} {:.4f}'.format('', 'Yғa*Ysa/[σғ]1', YFa1YSa1))
+print('{:　^8} {:^7} {:.4f}'.format('', 'Yғa*Ysa/[σғ]2', YFa2YSa2))
+print('{:—^15} {:-^7} {:-^7}'.format('', '', ''))
 YFaYSa = max(YFa1YSa1, YFa2YSa2)
 "#*     calculation result: 代数式Yғa*Ysa/[σғ]值(1)"
 
